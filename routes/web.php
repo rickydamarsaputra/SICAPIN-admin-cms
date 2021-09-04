@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\ArticleController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\QuizController;
+use App\Http\Controllers\PasscodeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'pages.public.passcode')->name('passcode');
+Route::post('/enter-passcode', [PasscodeController::class, 'enterPasscode'])->name('enter.passcode');
+Route::delete('/delete-passcode', [PasscodeController::class, 'deletePasscode'])->name('delete.passcode');
 
-Route::prefix('dashboard')->group(function () {
-    Route::view('/', 'pages.dashboard.index');
+Route::prefix('dashboard')->middleware('passcode')->group(function () {
+    Route::view('/', 'pages.dashboard.index')->name('dashboard');
 
     Route::prefix('category')->name('category.')->group(function () {
         Route::get('/', [CategoryController::class, 'index'])->name('index');
