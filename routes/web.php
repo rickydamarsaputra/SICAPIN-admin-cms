@@ -33,6 +33,8 @@ Route::prefix('dashboard')->middleware('passcode')->group(function () {
 
     Route::prefix('article')->name('article.')->group(function () {
         Route::get('/', [ArticleController::class, 'index'])->name('index');
+        Route::get('/create', [ArticleController::class, 'createView'])->name('create.view');
+        Route::post('/create', [ArticleController::class, 'create'])->name('create.process');
     });
 
     Route::prefix('quiz')->name('quiz.')->group(function () {
