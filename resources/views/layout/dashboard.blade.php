@@ -31,17 +31,17 @@
       <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html">SICAPIN</a>
+            <a href="{{ route('dashboard') }}">ZUPERIOR</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">CAPIN</a>
+            <a href="{{ route('dashboard') }}">Z</a>
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="{{ request()->path() == 'dashboard/category' || request()->path() == 'dashboard/category/create' ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('category.index') }}"><i class="fas fa-sitemap"></i> <span>Category</span></a>
             </li>
-            <li class="{{ request()->path() == 'dashboard/article' ? 'active' : '' }}">
+            <li class="{{ request()->path() == 'dashboard/article' || request()->path() == 'dashboard/article/create' ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('article.index') }}"><i class="fas fa-newspaper"></i> <span>Article</span></a>
             </li>
             <li class="{{ request()->path() == 'dashboard/quiz' ? 'active' : '' }}">
@@ -68,7 +68,7 @@
       </div>
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; {{ date('Y') }} <div class="bullet"></div> Design By Sicapin Developers
+          Copyright &copy; {{ date('Y') }} <div class="bullet"></div> Design By Zuperior Developers
         </div>
       </footer>
     </div>

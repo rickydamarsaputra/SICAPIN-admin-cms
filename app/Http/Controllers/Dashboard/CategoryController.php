@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 class CategoryController extends Controller
 {
-    public $url = 'https://sicapin-backend-rest-api.herokuapp.com/api/v1/category';
+    public $url = 'https://zuperior-backend-rest-api.herokuapp.com/api/v1/category';
 
     public function index()
     {
