@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\ArticleController;
+use App\Http\Controllers\Dashboard\AssetController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\QuizController;
 use App\Http\Controllers\PasscodeController;
@@ -29,15 +30,22 @@ Route::prefix('dashboard')->middleware('passcode')->group(function () {
         Route::view('/create', 'pages.dashboard.category.create')->name('create.view');
         Route::post('/create', [CategoryController::class, 'create'])->name('create.process');
         Route::delete('/{categoryId}', [CategoryController::class, 'delete'])->name('delete');
+        Route::get('/{categoryId}', [CategoryController::class, 'detail'])->name('detail');
     });
 
     Route::prefix('article')->name('article.')->group(function () {
         Route::get('/', [ArticleController::class, 'index'])->name('index');
         Route::get('/create', [ArticleController::class, 'createView'])->name('create.view');
         Route::post('/create', [ArticleController::class, 'create'])->name('create.process');
+        Route::delete('/{articleId}', [ArticleController::class, 'delete'])->name('delete');
+        Route::get('/{articleId}', [ArticleController::class, 'detail'])->name('detail');
     });
 
     Route::prefix('quiz')->name('quiz.')->group(function () {
         Route::get('/', [QuizController::class, 'index'])->name('index');
+    });
+
+    Route::prefix('asset')->name('asset.')->group(function () {
+        Route::get('/', [AssetController::class, 'index'])->name('index');
     });
 });

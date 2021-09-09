@@ -115,7 +115,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 .text-primary-all *,
 .text-primary-all *:before,
 .text-primary-all *:after {
-    color: #6777ef !important;
+    color: var(--primary) !important;
 }
 
 .text-secondary,

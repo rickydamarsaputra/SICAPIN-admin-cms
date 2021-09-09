@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Blank Page &mdash; Stisla</title>
+  <title>ITCC 2021 - Zuperior - @yield('title')</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -31,21 +31,24 @@
       <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="{{ route('dashboard') }}">ZUPERIOR</a>
+            <a href="{{ route('dashboard') }}" class="{{ request()->path() == 'dashboard' ? 'text-primary' : '' }}">ZUPERIOR</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{ route('dashboard') }}">Z</a>
+            <a href="{{ route('dashboard') }}" class="{{ request()->path() == 'dashboard' ? 'text-primary' : '' }}">Z</a>
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="{{ request()->path() == 'dashboard/category' || request()->path() == 'dashboard/category/create' ? 'active' : '' }}">
+            <li class="{{ substr(request()->path(), 0, 18) == 'dashboard/category' ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('category.index') }}"><i class="fas fa-sitemap"></i> <span>Category</span></a>
             </li>
-            <li class="{{ request()->path() == 'dashboard/article' || request()->path() == 'dashboard/article/create' ? 'active' : '' }}">
+            <li class="{{ substr(request()->path(), 0, 17) == 'dashboard/article' ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('article.index') }}"><i class="fas fa-newspaper"></i> <span>Article</span></a>
             </li>
             <li class="{{ request()->path() == 'dashboard/quiz' ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('quiz.index') }}"><i class="fas fa-feather-alt"></i> <span>Quiz</span></a>
+            </li>
+            <li class="{{ substr(request()->path(), 0, 15) == 'dashboard/asset' ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('asset.index') }}"><i class="fas fa-cube"></i> <span>Asset 3D</span></a>
             </li>
           </ul>
           <div class="mt-4 mb-4 p-3 hide-sidebar-mini">

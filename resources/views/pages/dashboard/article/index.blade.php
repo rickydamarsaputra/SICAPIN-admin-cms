@@ -33,14 +33,13 @@
                 </td>
                 <td class="align-middle">
                   <div class="d-flex">
-                    <form action="" method="post">
+                    <form action="{{ route('article.delete', $article->id) }}" method="post">
                       @csrf
                       @method('delete')
                       <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
-                    <form action="" class="ml-2">
-                      <button type="submit" class="btn btn-success btn-sm">Update</button>
-                    </form>
+                    <a href="#" class="btn btn-success btn-sm mx-2">Update</a>
+                    <a href="{{ route('article.detail', $article->id) }}" class="btn btn-info btn-sm">Detail</a>
                   </div>
                 </td>
               </tr>

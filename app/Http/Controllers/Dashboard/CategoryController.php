@@ -47,4 +47,13 @@ class CategoryController extends Controller
 
         return redirect()->back();
     }
+
+    public function detail($categoryId)
+    {
+        $response = Http::get($this->url . '/' . $categoryId);
+        $category = json_decode($response->body())->data;
+        return view('pages.dashboard.category.detail', [
+            'category' => $category
+        ]);
+    }
 }

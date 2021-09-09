@@ -53,4 +53,24 @@ class ArticleController extends Controller
 
         return redirect()->route('article.index');
     }
+
+    public function delete($articleId)
+    {
+        $response = Http::delete($this->url . '/' . $articleId);
+        $status = json_decode($response->body())->status;
+
+        if ($status != 'success') return abort(404);
+
+        return redirect()->back();
+    }
+
+    public function detail($articleId)
+    {
+        $response = Http::get($this->url . '/' . $articleId);
+        $article = json_decode($response->body())->data;
+
+        return view('pages.dashboard.article.detail', [
+            'article' => $article
+        ]);
+    }
 }
